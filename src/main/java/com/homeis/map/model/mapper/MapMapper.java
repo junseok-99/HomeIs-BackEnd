@@ -33,6 +33,7 @@ public interface MapMapper {
     public List<ApartDealInfo> selectLikeRank();
 
     public List<DongCodeDTO> selectDongCode(String inputDongName);
+    public List<HouseInfo> selectRangeDongCode(Map<String, String> param);
     
     public List<HouseInfo> selectHouseInfo(String dongCodeStr);
 }

@@ -31,7 +31,7 @@
         from houseinfo info join housedeal deal
         on info.aptCode = deal.aptCode
         where info.aptCode = #{aptCode}
-        order by deal.dealYear, deal.dealMonth, deal.dealDay
+        order by deal.dealYear desc, deal.dealMonth desc, deal.dealDay desc
         limit #{size} offset #{offset};
         <!-- limit 10 -->
     </select>
@@ -41,6 +41,12 @@
 		from houseinfo info join housedeal deal
         on info.aptCode = deal.aptCode
         where info.aptCode = #{aptCode}
+	</select>
+	
+	<select id="selectRangeDongCode" parameterType="map" resultType="houseInfo">
+		select aptCode, dongCode, buildYear, dong, apartmentName, jibun, lng, lat 
+		from houseinfo
+        where (lng between #{lng1} and #{lng2}) and (lat between #{lat1} and #{lat2});
 	</select>
     
     <select id="selectReviewAll" parameterType="string" resultType="review">
